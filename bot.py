@@ -66,8 +66,8 @@ MIN_PROFIT_USD    = 0.10
 HTTP_FALLBACK_SLEEP = 5
 
 USOL_TIERS = [
-    (0.30, 1000),
-    (0.15, 500),
+    (0.30, 600),
+    (0.20, 300),
 ]
 
 # cbBTC price fetched live on startup (not hardcoded)
