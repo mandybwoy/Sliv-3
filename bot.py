@@ -414,7 +414,6 @@ async def run_flashblocks_with_reconnect():
             await run_flashblocks()
         except Exception as e:
             print(f"Flashblocks error: {e} - reconnecting in {backoff}s")
-            send_telegram(f"WARNING Flashblocks dropped: {e} - reconnecting")
             await asyncio.sleep(backoff)
 
 def run_http_fallback():
