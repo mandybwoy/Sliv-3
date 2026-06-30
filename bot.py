@@ -388,15 +388,6 @@ async def run_flashblocks():
     print("Connecting to Flashblocks WSS...")
     async with websockets.connect(FLASHBLOCKS_WS) as ws:
         print("Flashblocks connected (no subscription call needed)")
-        send_telegram(
-            "Sliv 3 LIVE\n"
-            "uSOL/cbBTC: Aero 0.03% vs Cake 0.05%\n"
-            "Flash loan: Morpho Blue (0% fee)\n"
-            "Detection: Flashblocks ~200ms\n"
-            f"Tiers: {USOL_TIERS[1][0]}%/${USOL_TIERS[1][1]} | "
-            f"{USOL_TIERS[0][0]}%/${USOL_TIERS[0][1]}\n"
-            "Double-check: enabled >=0.3%"
-        )
         async for message in ws:
             try:
                 if isinstance(message, bytes):
@@ -440,6 +431,16 @@ def main():
     print("Flash loan: Morpho Blue (0% fee)")
 
     CBBTC_PRICE_USD = fetch_cbbtc_price_usd()
+
+    send_telegram(
+        "Sliv 3 LIVE\n"
+        "uSOL/cbBTC: Aero 0.03% vs Cake 0.05%\n"
+        "Flash loan: Morpho Blue (0% fee)\n"
+        "Detection: Flashblocks ~200ms\n"
+        f"Tiers: {USOL_TIERS[1][0]}%/${USOL_TIERS[1][1]} | "
+        f"{USOL_TIERS[0][0]}%/${USOL_TIERS[0][1]}\n"
+        "Double-check: enabled >=0.3%"
+    )
 
     try:
         asyncio.run(run_flashblocks_with_reconnect())
